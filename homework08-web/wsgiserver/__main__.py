@@ -2,6 +2,7 @@ import sys
 
 from .server import WSGIRequestHandler, WSGIServer
 
+
 if __name__ == "__main__":
     app_path = sys.argv[1]
     module, application = app_path.split(":")
