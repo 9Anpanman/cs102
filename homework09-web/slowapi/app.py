@@ -14,13 +14,13 @@ class SlowAPI:
 
     def __call__(self, environ, start_response):
         headers = {}
-        for i in environ:
-            if i.startswith("HTTP_"):
-                headers[i[5:].lower()] = environ[i]
+        for arg in environ:
+            if arg.startswith("HTTP_"):
+                headers[arg[5:].lower()] = environ[arg]
         query: tp.Dict[str, any] = {}
 
-        for i, j in parse_qsl(environ.get("QUERY_STRING", "")):
-            query[i] = j
+        for arg, value in parse_qsl(environ.get("QUERY_STRING", "")):
+            query[arg] = value
 
         request = Request(
             path=environ.get("PATH_INFO".rstrip("/"), "/"),
