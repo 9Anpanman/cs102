@@ -19,11 +19,11 @@ class SlowAPI:
                 headers[i[5:].lower()] = environ[i]
         query: tp.Dict[str, any] = {}
 
-        for i, j in parse_qsl(environ["QUERY_STRING"] or ""):
+        for i, j in parse_qsl(environ.get("QUERY_STRING", "")):
             query[i] = j
 
         request = Request(
-            path=environ["PATH_INFO"].rstrip("/") or "/",
+            path=environ.get("PATH_INFO".rstrip("/"), "/"),
             method=environ["REQUEST_METHOD"],
             query=query,
             headers=headers,
@@ -45,7 +45,7 @@ class SlowAPI:
     def get(self, path=None, **options):
         return self.route(path, method="GET", **options)
 
-    def post(self, path=None, func=None, **options):
+    def post(self, path=None, **options):
         return self.route(path, method="POST", **options)
 
     def patch(self, path=None, **options):

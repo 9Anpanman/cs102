@@ -68,5 +68,6 @@ def main():
     server = WSGIServer(port=8080, request_handler_cls=WSGIRequestHandler)
     server.set_app(application)
     server.serve_forever()
-    if __name__ == "__main__":
+
+if __name__ == "__main__":
         main()
