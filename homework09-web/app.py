@@ -69,5 +69,6 @@ def main():
     server.set_app(application)
     server.serve_forever()
 
+
 if __name__ == "__main__":
-        main()
+    main()
