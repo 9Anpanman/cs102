@@ -14,13 +14,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest black mypy pylint httptools
+        pip install pytest black mypy pylint httptools types-jwt
     - name: Run black
       run: |
-        black -l 100 --check --diff --color --exclude "test*" homework08-web 
+        black -l 100 --check --diff --color --exclude "test*" homework09-web
     - name: Run mypy
       run: |
-        mypy --ignore-missing-imports homework08-web --exclude "tests"
+        mypy --ignore-missing homework09-web
     - name: Run pylint
       run: |
-        pylint --exit-zero homework08-web
+        pylint --exit-zero homework09-web
